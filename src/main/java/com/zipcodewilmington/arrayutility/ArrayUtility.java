@@ -24,11 +24,21 @@ private T[] inputArray;
         return count;
     }
 
+    public Integer getNumberOfOccurrences(T valueToEvaluate, T[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] == valueToEvaluate) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public T getMostCommonFromMerge(T[] arrayToMerge) {
         return null;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
-        return null;
+        return getNumberOfOccurrences(valueToEvaluate) + getNumberOfOccurrences(valueToEvaluate, arrayToMerge);
     }
 }
