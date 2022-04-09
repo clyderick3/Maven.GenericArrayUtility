@@ -11,6 +11,7 @@ private T[] inputArray;
     }
 
     public T[] removeValue(T valueToRemove) {
+        //use for loop to removeValue.
         return null;
     }
 
