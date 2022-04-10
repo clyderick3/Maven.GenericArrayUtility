@@ -1,5 +1,6 @@
 package com.zipcodewilmington.arrayutility;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,21 +9,38 @@ import java.util.Arrays;
  */
 public class ArrayUtility<T>{
 private T[] inputArray;
+private ArrayList<T> newList;
+
 
     public ArrayUtility(T[] inputArray) {
         this.inputArray = inputArray;
+        this.newList = new ArrayList<T>();
+        this.newList.addAll(Arrays.asList(inputArray));
     }
+
 
     public T[] removeValue(T valueToRemove) {
         //use for loop to removeValue.
+        int removeCount = getNumberOfOccurrences(valueToRemove);
+        int count = 0;
 
-        ArrayList<T> list = new ArrayList<>(Arrays.asList(inputArray));
+        T[] outputArray = Arrays.copyOf(this.inputArray, this.inputArray.length - removeCount);
 
-        while (list.contains(valueToRemove)){
-            list.remove(valueToRemove);
+        for (T item : newList) {
+            if (!item.equals(valueToRemove)) {
+                outputArray[count++] = item;
+            }
         }
-        T[] arr = (T[])list.toArray(new String[0]);
-        return arr;
+        return outputArray;
+    }
+
+//        ArrayList<T> list = new ArrayList<>(Arrays.asList(inputArray));
+//
+//        while (list.contains(valueToRemove)){
+//            list.remove(valueToRemove);
+//        }
+//        T[] arr = (T[])list.toArray(new String[0]);
+//        return arr;
 
 //        int count = 0;
 //        T[] results = new T[];
@@ -34,7 +52,6 @@ private T[] inputArray;
         //}
 //        return results;
 //        return null;
-    }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
         int count = 0;
