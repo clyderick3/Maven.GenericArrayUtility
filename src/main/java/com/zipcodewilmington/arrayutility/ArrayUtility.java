@@ -57,7 +57,20 @@ private T[] inputArray;
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge) {
-        return null;
+        ArrayList<T> firstList = new ArrayList<>(Arrays.asList(inputArray));
+        ArrayList<T> secondList = new ArrayList<>(Arrays.asList(arrayToMerge));
+
+        firstList.addAll(secondList);
+        Integer number = 0;
+        T mostCommon = null;
+
+        for(T element : firstList){
+            if (getNumberOfOccurrences(element) > number) {
+                number = getNumberOfOccurrences(element);
+                mostCommon = element;
+            }
+        }
+        return mostCommon;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
