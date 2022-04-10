@@ -1,5 +1,8 @@
 package com.zipcodewilmington.arrayutility;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 3/6/18.
  */
@@ -12,7 +15,25 @@ private T[] inputArray;
 
     public T[] removeValue(T valueToRemove) {
         //use for loop to removeValue.
-        return null;
+
+        ArrayList<T> list = new ArrayList<>(Arrays.asList(inputArray));
+
+        while (list.contains(valueToRemove)){
+            list.remove(valueToRemove);
+        }
+        T[] arr = (T[])list.toArray(new String[0]);
+        return arr;
+
+//        int count = 0;
+//        T[] results = new T[];
+//        for (int i = 0; i < inputArray.length; i++){
+//            if (inputArray[i] != valueToRemove){
+//                results += inputArray[i];
+//                count++;
+    //}
+        //}
+//        return results;
+//        return null;
     }
 
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
